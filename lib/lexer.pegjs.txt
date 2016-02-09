@@ -1393,8 +1393,8 @@ SourceElement
 
 Statement
   = "{*" comment:(!"*}" SourceCharacter)* "*}" { return { type: 'TemplateComment', value: comment }; }
-  / "{{" __ literal:Literal __ "}}" { return { type: 'TemplateStatement', value: literal }; }
-  / "{%" __ "extends" __ template:Expression __ "%}"
+  / "{{" __ literal:Literal __ "}}" { return { type: 'TemplateLiteral', value: literal }; }
+  / "{%" __ "extends" __ template:StringLiteral __ "%}"
     {
       return {
         type: "TemplateExtend",
@@ -1440,15 +1440,40 @@ Statement
         body: optionalList(extractOptional(body, 0))
       };
     }
-  / "{%" __ "if" __ test:Expression __ "%}" __
-    body:(StatementList __)? __
+  / "{%" __ condition:IfStatement __
     "{%" __ "endif" __ "%}"
+    {
+      return condition;
+    }
+
+IfStatement
+  = "if" __ test:Expression __ "%}" __
+    consequent:(StatementList __)? __
+    "{%" __ "else" __ alternate:IfStatement
+    {
+      return {
+        type: "TemplateIfElse",
+        test: test,
+        consequent: optionalList(extractOptional(consequent, 0)),
+        alternate: alternate
+      }
+    }
+  / "if" __ test:Expression __ "%}" __
+    consequent:(StatementList __)? __
     {
       return {
         type: "TemplateIf",
         test: test,
-        body: optionalList(extractOptional(body, 0))
-      };
+        consequent: optionalList(extractOptional(consequent, 0))
+      }
+    }
+  / "%}" __
+    alternate:(StatementList __)? __
+    {
+      return {
+        type: "TemplateElse",
+        alternate: optionalList(extractOptional(alternate, 0))
+      }
     }
 
 //IfStatement

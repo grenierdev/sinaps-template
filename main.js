@@ -19,11 +19,28 @@ var str = `
 	} %}
 `;
 
-//str = `
-//	Foo
-//	{{ 32 }}
-//	Bar
-//`;
+str = `
+	{% if true %}
+		{{ 1 }}
+	{% endif %}
+	{% if true %}
+		{{ 2 }}
+	{% else %}
+		{{ 3 }}
+	{% endif %}
+	{% if true %}
+		{{ 4 }}
+	{% else if true %}
+		{{ 5 }}
+	{% endif %}
+	{% if true %}
+		{{ 6 }}
+	{% else if true %}
+		{{ 7 }}
+	{% else if true %}
+		{{ 8 }}
+	{% endif %}
+`;
 
 try {
 	var t = process.hrtime();
@@ -32,7 +49,6 @@ try {
 	t = process.hrtime(t);
 	console.log(((t[0] * 1e9 + t[1]) / 1e6).toFixed(4) + 'ms');
 } catch (e) {
-	if (e instanceof Parser.SyntaxError) {
-		console.error(e);
-	}
+	console.error(e.stack);
+	console.error(e.location);
 }
