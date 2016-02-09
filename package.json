@@ -1,0 +1,32 @@
+{
+  "name": "sinaps-template",
+  "version": "0.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "node build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinapsio/sinaps-template.git"
+  },
+  "keywords": [
+    "pegjs",
+    "template",
+    "jinja"
+  ],
+  "author": {
+    "name": "Michael Grenier",
+    "email": "michael.grenier@live.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sinapsio/sinaps-template/issues"
+  },
+  "homepage": "https://github.com/sinapsio/sinaps-template#readme",
+  "license": "MIT",
+  "devDependencies": {
+    "pegjs": "^0.9.0"
+  }
+}
