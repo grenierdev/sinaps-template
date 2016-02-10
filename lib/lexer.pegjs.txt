@@ -1418,6 +1418,15 @@ TemplateStatement
         location: location()
       };
     }
+  / "{%" __ "import" __ template:StringLiteral __ "as" __ as:StringLiteral __ "%}" {
+      return {
+        location: location(),
+        type: "TemplateExtend",
+        template: template,
+        as: as,
+        location: location()
+      };
+    }
   / "{%" __ "set" __ expression:AssignmentExpression __ "%}" {
       return {
         type: "TemplateSet",
@@ -1426,61 +1435,49 @@ TemplateStatement
       };
     }
   / "{%" __ "endmacro" __ "%}" { return { type: "TemplateEndMacro" } }
-  / "{%" __ "macro" __ name:Identifier __ "%}"
-    body:TemplateSourceElements {
+  / "{%" __ "macro" __ name:Identifier __ "%}" {
       return {
         type: "TemplateMacro",
         name: name,
-        body: body,
         location: location()
       };
     }
   / "{%" __ "endblock" __ "%}" { return { type: "TemplateEndBlock" } }
-  / "{%" __ "block" __ name:Identifier __ "%}"
-    body:TemplateSourceElements {
+  / "{%" __ "block" __ name:Identifier __ "%}" {
       return {
         type: "TemplateBlock",
         name: name,
-        body: body,
         location: location()
       };
     }
   / "{%" __ "endfor" __ "%}" { return { type: "TemplateEndFor" } }
-  / "{%" __ "for" __ key:(Identifier __ "," __)? value:Identifier __ "in" __ list:Expression __ "%}"
-    body:TemplateSourceElements {
+  / "{%" __ "for" __ key:(Identifier __ "," __)? value:Identifier __ "in" __ list:Expression __ "%}" {
       return {
         type: "TemplateFor",
         key: key,
         value: value,
         list: list,
-        body: body,
         location: location()
       };
     }
   / "{%" __ "endif" __ "%}" { return { type: "TemplateEndIf" } }
-  / "{%" __ "if" __ test:Expression __ "%}"
-    consequent:TemplateSourceElements {
+  / "{%" __ "if" __ test:Expression __ "%}" {
       return {
         type: "TemplateIf",
         test: test,
-        consequent: consequent,
         location: location()
       };
     }
-  / "{%" __ "elseif" __ test:Expression __ "%}"
-    consequent:TemplateSourceElements {
+  / "{%" __ "elseif" __ test:Expression __ "%}" {
       return {
         type: "TemplateElseIf",
         test: test,
-        consequent: consequent,
         location: location()
       };
     }
-  / "{%" __ "else" __ "%}"
-    consequent:TemplateSourceElements {
+  / "{%" __ "else" __ "%}" {
       return {
         type: "TemplateElse",
-        consequent: consequent,
         location: location()
       };
     }
