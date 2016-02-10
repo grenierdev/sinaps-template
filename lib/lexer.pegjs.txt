@@ -1,5 +1,5 @@
 /*
- * Jinja2-like Grammar
+ * JavaScript Grammar
  * ==================
  *
  * Based on grammar from ECMA-262, 5.1 Edition [1]. Generated parser builds a
@@ -188,55 +188,53 @@ UnicodeConnectorPunctuation
   = Pc
 
 ReservedWord
-//  = Keyword
-//  / FutureReservedWord
-  = NullLiteral
+  = Keyword
+  / FutureReservedWord
+  / NullLiteral
   / BooleanLiteral
 
-//Keyword
-//  = BreakToken
-//  / CaseToken
-//  / CatchToken
-//  / ContinueToken
-//  / DebuggerToken
-//  / DefaultToken
-//  / DeleteToken
-//  / DoToken
-//  / ElseToken
-//  / FinallyToken
-//  / ForToken
-//  / FunctionToken
-//  / IfToken
-//  / InstanceofToken
-//  / InToken
-//  / NewToken
-//  / ReturnToken
-//  / SwitchToken
-//  / ThisToken
-//  / ThrowToken
-//  / TryToken
-//  / TypeofToken
-//  / VarToken
-//  / VoidToken
-//  / WhileToken
-//  / WithToken
+Keyword
+  = BreakToken
+  / CaseToken
+  / CatchToken
+  / ContinueToken
+  / DebuggerToken
+  / DefaultToken
+  / DeleteToken
+  / DoToken
+  / ElseToken
+  / FinallyToken
+  / ForToken
+  / FunctionToken
+  / IfToken
+  / InstanceofToken
+  / InToken
+  / NewToken
+  / ReturnToken
+  / SwitchToken
+  / ThisToken
+  / ThrowToken
+  / TryToken
+  / TypeofToken
+  / VarToken
+  / VoidToken
+  / WhileToken
+  / WithToken
 
-//FutureReservedWord
-//  = ClassToken
-//  / ConstToken
-//  / EnumToken
-//  / ExportToken
-//  / ExtendsToken
-//  / ImportToken
-//  / SuperToken
+FutureReservedWord
+  = ClassToken
+  / ConstToken
+  / EnumToken
+  / ExportToken
+  / ExtendsToken
+  / ImportToken
+  / SuperToken
 
 Literal
   = NullLiteral
   / BooleanLiteral
   / NumericLiteral
   / StringLiteral
-  / ObjectLiteral
-  / ArrayLiteral
   / RegularExpressionLiteral
 
 NullLiteral
@@ -459,44 +457,44 @@ Zs = [\u0020\u00A0\u1680\u2000-\u200A\u202F\u205F\u3000]
 
 /* Tokens */
 
-//BreakToken      = "break"      !IdentifierPart
-//CaseToken       = "case"       !IdentifierPart
-//CatchToken      = "catch"      !IdentifierPart
-//ClassToken      = "class"      !IdentifierPart
-//ConstToken      = "const"      !IdentifierPart
-//ContinueToken   = "continue"   !IdentifierPart
-//DebuggerToken   = "debugger"   !IdentifierPart
-//DefaultToken    = "default"    !IdentifierPart
-//DeleteToken     = "delete"     !IdentifierPart
-//DoToken         = "do"         !IdentifierPart
-//ElseToken       = "else"       !IdentifierPart
-//EnumToken       = "enum"       !IdentifierPart
-//ExportToken     = "export"     !IdentifierPart
-//ExtendsToken    = "extends"    !IdentifierPart
+BreakToken      = "break"      !IdentifierPart
+CaseToken       = "case"       !IdentifierPart
+CatchToken      = "catch"      !IdentifierPart
+ClassToken      = "class"      !IdentifierPart
+ConstToken      = "const"      !IdentifierPart
+ContinueToken   = "continue"   !IdentifierPart
+DebuggerToken   = "debugger"   !IdentifierPart
+DefaultToken    = "default"    !IdentifierPart
+DeleteToken     = "delete"     !IdentifierPart
+DoToken         = "do"         !IdentifierPart
+ElseToken       = "else"       !IdentifierPart
+EnumToken       = "enum"       !IdentifierPart
+ExportToken     = "export"     !IdentifierPart
+ExtendsToken    = "extends"    !IdentifierPart
 FalseToken      = "false"      !IdentifierPart
-//FinallyToken    = "finally"    !IdentifierPart
-//ForToken        = "for"        !IdentifierPart
-//FunctionToken   = "function"   !IdentifierPart
-//GetToken        = "get"        !IdentifierPart
-//IfToken         = "if"         !IdentifierPart
-//ImportToken     = "import"     !IdentifierPart
-//InstanceofToken = "instanceof" !IdentifierPart
-//InToken         = "in"         !IdentifierPart
-//NewToken        = "new"        !IdentifierPart
+FinallyToken    = "finally"    !IdentifierPart
+ForToken        = "for"        !IdentifierPart
+FunctionToken   = "function"   !IdentifierPart
+GetToken        = "get"        !IdentifierPart
+IfToken         = "if"         !IdentifierPart
+ImportToken     = "import"     !IdentifierPart
+InstanceofToken = "instanceof" !IdentifierPart
+InToken         = "in"         !IdentifierPart
+NewToken        = "new"        !IdentifierPart
 NullToken       = "null"       !IdentifierPart
-//ReturnToken     = "return"     !IdentifierPart
-//SetToken        = "set"        !IdentifierPart
-//SuperToken      = "super"      !IdentifierPart
-//SwitchToken     = "switch"     !IdentifierPart
-//ThisToken       = "this"       !IdentifierPart
-//ThrowToken      = "throw"      !IdentifierPart
+ReturnToken     = "return"     !IdentifierPart
+SetToken        = "set"        !IdentifierPart
+SuperToken      = "super"      !IdentifierPart
+SwitchToken     = "switch"     !IdentifierPart
+ThisToken       = "this"       !IdentifierPart
+ThrowToken      = "throw"      !IdentifierPart
 TrueToken       = "true"       !IdentifierPart
-//TryToken        = "try"        !IdentifierPart
-//TypeofToken     = "typeof"     !IdentifierPart
-//VarToken        = "var"        !IdentifierPart
-//VoidToken       = "void"       !IdentifierPart
-//WhileToken      = "while"      !IdentifierPart
-//WithToken       = "with"       !IdentifierPart
+TryToken        = "try"        !IdentifierPart
+TypeofToken     = "typeof"     !IdentifierPart
+VarToken        = "var"        !IdentifierPart
+VoidToken       = "void"       !IdentifierPart
+WhileToken      = "while"      !IdentifierPart
+WithToken       = "with"       !IdentifierPart
 
 /* Skipped */
 
@@ -510,6 +508,7 @@ _
 
 EOS
   = __ ";"
+  / _ SingleLineComment? LineTerminatorSequence
   / _ &"}"
   / __ EOF
 
@@ -523,12 +522,12 @@ EOF
 /* ----- A.3 Expressions ----- */
 
 PrimaryExpression
-//  = ThisToken { return { type: "ThisExpression" }; }
-  = Identifier
+  = ThisToken { return { type: "ThisExpression" }; }
+  / Identifier
   / Literal
   / ArrayLiteral
   / ObjectLiteral
-//  / "(" __ expression:Expression __ ")" { return expression; }
+  / "(" __ expression:Expression __ ")" { return expression; }
 
 ArrayLiteral
   = "[" __ elision:(Elision __)? "]" {
@@ -583,36 +582,36 @@ PropertyAssignment
   = key:PropertyName __ ":" __ value:AssignmentExpression {
       return { key: key, value: value, kind: "init" };
     }
-//  / GetToken __ key:PropertyName __
-//    "(" __ ")" __
-//    "{" __ body:FunctionBody __ "}"
-//    {
-//      return {
-//        key:   key,
-//        value: {
-//          type:   "FunctionExpression",
-//          id:     null,
-//          params: [],
-//          body:   body
-//        },
-//        kind:  "get"
-//      };
-//    }
-//  / SetToken __ key:PropertyName __
-//    "(" __ params:PropertySetParameterList __ ")" __
-//    "{" __ body:FunctionBody __ "}"
-//    {
-//      return {
-//        key:   key,
-//        value: {
-//          type:   "FunctionExpression",
-//          id:     null,
-//          params: params,
-//          body:   body
-//        },
-//        kind:  "set"
-//      };
-//    }
+  / GetToken __ key:PropertyName __
+    "(" __ ")" __
+    "{" __ body:FunctionBody __ "}"
+    {
+      return {
+        key:   key,
+        value: {
+          type:   "FunctionExpression",
+          id:     null,
+          params: [],
+          body:   body
+        },
+        kind:  "get"
+      };
+    }
+  / SetToken __ key:PropertyName __
+    "(" __ params:PropertySetParameterList __ ")" __
+    "{" __ body:FunctionBody __ "}"
+    {
+      return {
+        key:   key,
+        value: {
+          type:   "FunctionExpression",
+          id:     null,
+          params: params,
+          body:   body
+        },
+        kind:  "set"
+      };
+    }
 
 PropertyName
   = IdentifierName
@@ -625,10 +624,10 @@ PropertySetParameterList
 MemberExpression
   = head:(
         PrimaryExpression
-//      / FunctionExpression
-//      / NewToken __ callee:MemberExpression __ args:Arguments {
-//          return { type: "NewExpression", callee: callee, arguments: args };
-//        }
+      / FunctionExpression
+      / NewToken __ callee:MemberExpression __ args:Arguments {
+          return { type: "NewExpression", callee: callee, arguments: args };
+        }
     )
     tail:(
         __ "[" __ property:Expression __ "]" {
@@ -651,9 +650,9 @@ MemberExpression
 
 NewExpression
   = MemberExpression
-//  / NewToken __ callee:NewExpression {
-//      return { type: "NewExpression", callee: callee, arguments: [] };
-//    }
+  / NewToken __ callee:NewExpression {
+      return { type: "NewExpression", callee: callee, arguments: [] };
+    }
 
 CallExpression
   = head:(
@@ -703,19 +702,19 @@ LeftHandSideExpression
   / NewExpression
 
 PostfixExpression
-//  = argument:LeftHandSideExpression _ operator:PostfixOperator {
-//      return {
-//        type:     "UpdateExpression",
-//        operator: operator,
-//        argument: argument,
-//        prefix:   false
-//      };
-//    }
-  = LeftHandSideExpression
+  = argument:LeftHandSideExpression _ operator:PostfixOperator {
+      return {
+        type:     "UpdateExpression",
+        operator: operator,
+        argument: argument,
+        prefix:   false
+      };
+    }
+  / LeftHandSideExpression
 
-//PostfixOperator
-//  = "++"
-//  / "--"
+PostfixOperator
+  = "++"
+  / "--"
 
 UnaryExpression
   = PostfixExpression
@@ -733,10 +732,10 @@ UnaryExpression
     }
 
 UnaryOperator
-//  = $DeleteToken
-//  = $VoidToken
-//  / $TypeofToken
-  = "++"
+  = $DeleteToken
+  / $VoidToken
+  / $TypeofToken
+  / "++"
   / "--"
   / $("+" !"=")
   / $("-" !"=")
@@ -782,8 +781,8 @@ RelationalOperator
   / ">="
   / $("<" !"<")
   / $(">" !">")
-//  / $InstanceofToken
-//  / $InToken
+  / $InstanceofToken
+  / $InToken
 
 RelationalExpressionNoIn
   = head:ShiftExpression
@@ -795,7 +794,7 @@ RelationalOperatorNoIn
   / ">="
   / $("<" !"<")
   / $(">" !">")
-//  / $InstanceofToken
+  / $InstanceofToken
 
 EqualityExpression
   = head:RelationalExpression
@@ -985,371 +984,370 @@ ExpressionNoIn
 
 /* ----- A.4 Statements ----- */
 
-//Block
-//  = "{" __ body:(StatementList __)? "}" {
-//      return {
-//        type: "BlockStatement",
-//        body: optionalList(extractOptional(body, 0))
-//      };
-//    }
+Statement
+  = Block
+  / VariableStatement
+  / EmptyStatement
+  / ExpressionStatement
+  / IfStatement
+  / IterationStatement
+  / ContinueStatement
+  / BreakStatement
+  / ReturnStatement
+  / WithStatement
+  / LabelledStatement
+  / SwitchStatement
+  / ThrowStatement
+  / TryStatement
+  / DebuggerStatement
+
+Block
+  = "{" __ body:(StatementList __)? "}" {
+      return {
+        type: "BlockStatement",
+        body: optionalList(extractOptional(body, 0))
+      };
+    }
 
 StatementList
   = head:Statement tail:(__ Statement)* { return buildList(head, tail, 1); }
 
-//VariableStatement
-//  = VarToken __ declarations:VariableDeclarationList EOS {
-//      return {
-//        type:         "VariableDeclaration",
-//        declarations: declarations
-//      };
-//    }
+VariableStatement
+  = VarToken __ declarations:VariableDeclarationList EOS {
+      return {
+        type:         "VariableDeclaration",
+        declarations: declarations
+      };
+    }
 
-//VariableDeclarationList
-//  = head:VariableDeclaration tail:(__ "," __ VariableDeclaration)* {
-//      return buildList(head, tail, 3);
-//    }
+VariableDeclarationList
+  = head:VariableDeclaration tail:(__ "," __ VariableDeclaration)* {
+      return buildList(head, tail, 3);
+    }
 
-//VariableDeclarationListNoIn
-//  = head:VariableDeclarationNoIn tail:(__ "," __ VariableDeclarationNoIn)* {
-//      return buildList(head, tail, 3);
-//    }
+VariableDeclarationListNoIn
+  = head:VariableDeclarationNoIn tail:(__ "," __ VariableDeclarationNoIn)* {
+      return buildList(head, tail, 3);
+    }
 
-//VariableDeclaration
-//  = id:Identifier init:(__ Initialiser)? {
-//      return {
-//        type: "VariableDeclarator",
-//        id:   id,
-//        init: extractOptional(init, 1)
-//      };
-//    }
+VariableDeclaration
+  = id:Identifier init:(__ Initialiser)? {
+      return {
+        type: "VariableDeclarator",
+        id:   id,
+        init: extractOptional(init, 1)
+      };
+    }
 
-//VariableDeclarationNoIn
-//  = id:Identifier init:(__ InitialiserNoIn)? {
-//      return {
-//        type: "VariableDeclarator",
-//        id:   id,
-//        init: extractOptional(init, 1)
-//      };
-//    }
+VariableDeclarationNoIn
+  = id:Identifier init:(__ InitialiserNoIn)? {
+      return {
+        type: "VariableDeclarator",
+        id:   id,
+        init: extractOptional(init, 1)
+      };
+    }
 
-//Initialiser
-//  = "=" !"=" __ expression:AssignmentExpression { return expression; }
+Initialiser
+  = "=" !"=" __ expression:AssignmentExpression { return expression; }
 
-//InitialiserNoIn
-//  = "=" !"=" __ expression:AssignmentExpressionNoIn { return expression; }
+InitialiserNoIn
+  = "=" !"=" __ expression:AssignmentExpressionNoIn { return expression; }
 
-//EmptyStatement
-//  = ";" { return { type: "EmptyStatement" }; }
+EmptyStatement
+  = ";" { return { type: "EmptyStatement" }; }
 
-//ExpressionStatement
-//  = !("{" / FunctionToken) expression:Expression EOS {
-//      return {
-//        type:       "ExpressionStatement",
-//        expression: expression
-//      };
-//    }
+ExpressionStatement
+  = !("{" / FunctionToken) expression:Expression EOS {
+      return {
+        type:       "ExpressionStatement",
+        expression: expression
+      };
+    }
 
-//IfStatement
-//  = IfToken __ "(" __ test:Expression __ ")" __
-//    consequent:Statement __
-//    ElseToken __
-//    alternate:Statement
-//    {
-//      return {
-//        type:       "IfStatement",
-//        test:       test,
-//        consequent: consequent,
-//        alternate:  alternate
-//      };
-//    }
-//  / IfToken __ "(" __ test:Expression __ ")" __
-//    consequent:Statement {
-//      return {
-//        type:       "IfStatement",
-//        test:       test,
-//        consequent: consequent,
-//        alternate:  null
-//      };
-//    }
+IfStatement
+  = IfToken __ "(" __ test:Expression __ ")" __
+    consequent:Statement __
+    ElseToken __
+    alternate:Statement
+    {
+      return {
+        type:       "IfStatement",
+        test:       test,
+        consequent: consequent,
+        alternate:  alternate
+      };
+    }
+  / IfToken __ "(" __ test:Expression __ ")" __
+    consequent:Statement {
+      return {
+        type:       "IfStatement",
+        test:       test,
+        consequent: consequent,
+        alternate:  null
+      };
+    }
 
-//IterationStatement
-//  = DoToken __
-//    body:Statement __
-//    WhileToken __ "(" __ test:Expression __ ")" EOS
-//    { return { type: "DoWhileStatement", body: body, test: test }; }
-//  / WhileToken __ "(" __ test:Expression __ ")" __
-//    body:Statement
-//    { return { type: "WhileStatement", test: test, body: body }; }
-//  / ForToken __
-//    "(" __
-//    init:(ExpressionNoIn __)? ";" __
-//    test:(Expression __)? ";" __
-//    update:(Expression __)?
-//    ")" __
-//    body:Statement
-//    {
-//      return {
-//        type:   "ForStatement",
-//        init:   extractOptional(init, 0),
-//        test:   extractOptional(test, 0),
-//        update: extractOptional(update, 0),
-//        body:   body
-//      };
-//    }
-//  / ForToken __
-//    "(" __
-//    VarToken __ declarations:VariableDeclarationListNoIn __ ";" __
-//    test:(Expression __)? ";" __
-//    update:(Expression __)?
-//    ")" __
-//    body:Statement
-//    {
-//      return {
-//        type:   "ForStatement",
-//        init:   {
-//          type:         "VariableDeclaration",
-//          declarations: declarations
-//        },
-//        test:   extractOptional(test, 0),
-//        update: extractOptional(update, 0),
-//        body:   body
-//      };
-//    }
-//  / ForToken __
-//    "(" __
-//    left:LeftHandSideExpression __
-//    InToken __
-//    right:Expression __
-//    ")" __
-//    body:Statement
-//    {
-//      return {
-//        type:  "ForInStatement",
-//        left:  left,
-//        right: right,
-//        body:  body
-//      };
-//    }
-//  / ForToken __
-//    "(" __
-//    VarToken __ declarations:VariableDeclarationListNoIn __
-//    InToken __
-//    right:Expression __
-//    ")" __
-//    body:Statement
-//    {
-//      return {
-//        type:  "ForInStatement",
-//        left:  {
-//          type:         "VariableDeclaration",
-//          declarations: declarations
-//        },
-//        right: right,
-//        body:  body
-//      };
-//    }
+IterationStatement
+  = DoToken __
+    body:Statement __
+    WhileToken __ "(" __ test:Expression __ ")" EOS
+    { return { type: "DoWhileStatement", body: body, test: test }; }
+  / WhileToken __ "(" __ test:Expression __ ")" __
+    body:Statement
+    { return { type: "WhileStatement", test: test, body: body }; }
+  / ForToken __
+    "(" __
+    init:(ExpressionNoIn __)? ";" __
+    test:(Expression __)? ";" __
+    update:(Expression __)?
+    ")" __
+    body:Statement
+    {
+      return {
+        type:   "ForStatement",
+        init:   extractOptional(init, 0),
+        test:   extractOptional(test, 0),
+        update: extractOptional(update, 0),
+        body:   body
+      };
+    }
+  / ForToken __
+    "(" __
+    VarToken __ declarations:VariableDeclarationListNoIn __ ";" __
+    test:(Expression __)? ";" __
+    update:(Expression __)?
+    ")" __
+    body:Statement
+    {
+      return {
+        type:   "ForStatement",
+        init:   {
+          type:         "VariableDeclaration",
+          declarations: declarations
+        },
+        test:   extractOptional(test, 0),
+        update: extractOptional(update, 0),
+        body:   body
+      };
+    }
+  / ForToken __
+    "(" __
+    left:LeftHandSideExpression __
+    InToken __
+    right:Expression __
+    ")" __
+    body:Statement
+    {
+      return {
+        type:  "ForInStatement",
+        left:  left,
+        right: right,
+        body:  body
+      };
+    }
+  / ForToken __
+    "(" __
+    VarToken __ declarations:VariableDeclarationListNoIn __
+    InToken __
+    right:Expression __
+    ")" __
+    body:Statement
+    {
+      return {
+        type:  "ForInStatement",
+        left:  {
+          type:         "VariableDeclaration",
+          declarations: declarations
+        },
+        right: right,
+        body:  body
+      };
+    }
 
-//ContinueStatement
-//  = ContinueToken EOS {
-//      return { type: "ContinueStatement", label: null };
-//    }
-//  / ContinueToken _ label:Identifier EOS {
-//      return { type: "ContinueStatement", label: label };
-//    }
+ContinueStatement
+  = ContinueToken EOS {
+      return { type: "ContinueStatement", label: null };
+    }
+  / ContinueToken _ label:Identifier EOS {
+      return { type: "ContinueStatement", label: label };
+    }
 
-//BreakStatement
-//  = BreakToken EOS {
-//      return { type: "BreakStatement", label: null };
-//    }
-//  / BreakToken _ label:Identifier EOS {
-//      return { type: "BreakStatement", label: label };
-//    }
+BreakStatement
+  = BreakToken EOS {
+      return { type: "BreakStatement", label: null };
+    }
+  / BreakToken _ label:Identifier EOS {
+      return { type: "BreakStatement", label: label };
+    }
 
-//ReturnStatement
-//  = ReturnToken EOS {
-//      return { type: "ReturnStatement", argument: null };
-//    }
-//  / ReturnToken _ argument:Expression EOS {
-//      return { type: "ReturnStatement", argument: argument };
-//    }
+ReturnStatement
+  = ReturnToken EOS {
+      return { type: "ReturnStatement", argument: null };
+    }
+  / ReturnToken _ argument:Expression EOS {
+      return { type: "ReturnStatement", argument: argument };
+    }
 
-//WithStatement
-//  = WithToken __ "(" __ object:Expression __ ")" __
-//    body:Statement
-//    { return { type: "WithStatement", object: object, body: body }; }
+WithStatement
+  = WithToken __ "(" __ object:Expression __ ")" __
+    body:Statement
+    { return { type: "WithStatement", object: object, body: body }; }
 
-//SwitchStatement
-//  = SwitchToken __ "(" __ discriminant:Expression __ ")" __
-//    cases:CaseBlock
-//    {
-//      return {
-//        type:         "SwitchStatement",
-//        discriminant: discriminant,
-//        cases:        cases
-//      };
-//    }
+SwitchStatement
+  = SwitchToken __ "(" __ discriminant:Expression __ ")" __
+    cases:CaseBlock
+    {
+      return {
+        type:         "SwitchStatement",
+        discriminant: discriminant,
+        cases:        cases
+      };
+    }
 
-//CaseBlock
-//  = "{" __ clauses:(CaseClauses __)? "}" {
-//      return optionalList(extractOptional(clauses, 0));
-//    }
-//  / "{" __
-//    before:(CaseClauses __)?
-//    default_:DefaultClause __
-//    after:(CaseClauses __)? "}"
-//    {
-//      return optionalList(extractOptional(before, 0))
-//        .concat(default_)
-//        .concat(optionalList(extractOptional(after, 0)));
-//    }
+CaseBlock
+  = "{" __ clauses:(CaseClauses __)? "}" {
+      return optionalList(extractOptional(clauses, 0));
+    }
+  / "{" __
+    before:(CaseClauses __)?
+    default_:DefaultClause __
+    after:(CaseClauses __)? "}"
+    {
+      return optionalList(extractOptional(before, 0))
+        .concat(default_)
+        .concat(optionalList(extractOptional(after, 0)));
+    }
 
-//CaseClauses
-//  = head:CaseClause tail:(__ CaseClause)* { return buildList(head, tail, 1); }
+CaseClauses
+  = head:CaseClause tail:(__ CaseClause)* { return buildList(head, tail, 1); }
 
-//CaseClause
-//  = CaseToken __ test:Expression __ ":" consequent:(__ StatementList)? {
-//      return {
-//        type:       "SwitchCase",
-//        test:       test,
-//        consequent: optionalList(extractOptional(consequent, 1))
-//      };
-//    }
+CaseClause
+  = CaseToken __ test:Expression __ ":" consequent:(__ StatementList)? {
+      return {
+        type:       "SwitchCase",
+        test:       test,
+        consequent: optionalList(extractOptional(consequent, 1))
+      };
+    }
 
-//DefaultClause
-//  = DefaultToken __ ":" consequent:(__ StatementList)? {
-//      return {
-//        type:       "SwitchCase",
-//        test:       null,
-//        consequent: optionalList(extractOptional(consequent, 1))
-//      };
-//    }
+DefaultClause
+  = DefaultToken __ ":" consequent:(__ StatementList)? {
+      return {
+        type:       "SwitchCase",
+        test:       null,
+        consequent: optionalList(extractOptional(consequent, 1))
+      };
+    }
 
-//LabelledStatement
-//  = label:Identifier __ ":" __ body:Statement {
-//      return { type: "LabeledStatement", label: label, body: body };
-//    }
+LabelledStatement
+  = label:Identifier __ ":" __ body:Statement {
+      return { type: "LabeledStatement", label: label, body: body };
+    }
 
-//ThrowStatement
-//  = ThrowToken _ argument:Expression EOS {
-//      return { type: "ThrowStatement", argument: argument };
-//    }
+ThrowStatement
+  = ThrowToken _ argument:Expression EOS {
+      return { type: "ThrowStatement", argument: argument };
+    }
 
-//TryStatement
-//  = TryToken __ block:Block __ handler:Catch __ finalizer:Finally {
-//      return {
-//        type:      "TryStatement",
-//        block:     block,
-//        handler:   handler,
-//        finalizer: finalizer
-//      };
-//    }
-//  / TryToken __ block:Block __ handler:Catch {
-//      return {
-//        type:      "TryStatement",
-//        block:     block,
-//        handler:   handler,
-//        finalizer: null
-//      };
-//    }
-//  / TryToken __ block:Block __ finalizer:Finally {
-//      return {
-//        type:      "TryStatement",
-//        block:     block,
-//        handler:   null,
-//        finalizer: finalizer
-//      };
-//    }
+TryStatement
+  = TryToken __ block:Block __ handler:Catch __ finalizer:Finally {
+      return {
+        type:      "TryStatement",
+        block:     block,
+        handler:   handler,
+        finalizer: finalizer
+      };
+    }
+  / TryToken __ block:Block __ handler:Catch {
+      return {
+        type:      "TryStatement",
+        block:     block,
+        handler:   handler,
+        finalizer: null
+      };
+    }
+  / TryToken __ block:Block __ finalizer:Finally {
+      return {
+        type:      "TryStatement",
+        block:     block,
+        handler:   null,
+        finalizer: finalizer
+      };
+    }
 
-//Catch
-//  = CatchToken __ "(" __ param:Identifier __ ")" __ body:Block {
-//      return {
-//        type:  "CatchClause",
-//        param: param,
-//        body:  body
-//      };
-//    }
+Catch
+  = CatchToken __ "(" __ param:Identifier __ ")" __ body:Block {
+      return {
+        type:  "CatchClause",
+        param: param,
+        body:  body
+      };
+    }
 
-//Finally
-//  = FinallyToken __ block:Block { return block; }
+Finally
+  = FinallyToken __ block:Block { return block; }
 
-//DebuggerStatement
-//  = DebuggerToken EOS { return { type: "DebuggerStatement" }; }
-
-//Statement
-//  = Block
-//  / VariableStatement
-//  / EmptyStatement
-//  / ExpressionStatement
-//  / IfStatement
-//  / IterationStatement
-//  / ContinueStatement
-//  / BreakStatement
-//  / ReturnStatement
-//  / WithStatement
-//  / LabelledStatement
-//  / SwitchStatement
-//  / ThrowStatement
-//  / TryStatement
-//  / DebuggerStatement
+DebuggerStatement
+  = DebuggerToken EOS { return { type: "DebuggerStatement" }; }
 
 /* ----- A.5 Functions and Programs ----- */
 
-//FunctionDeclaration
-//  = FunctionToken __ id:Identifier __
-//    "(" __ params:(FormalParameterList __)? ")" __
-//    "{" __ body:FunctionBody __ "}"
-//    {
-//      return {
-//        type:   "FunctionDeclaration",
-//        id:     id,
-//        params: optionalList(extractOptional(params, 0)),
-//        body:   body
-//      };
-//    }
+FunctionDeclaration
+  = FunctionToken __ id:Identifier __
+    "(" __ params:(FormalParameterList __)? ")" __
+    "{" __ body:FunctionBody __ "}"
+    {
+      return {
+        type:   "FunctionDeclaration",
+        id:     id,
+        params: optionalList(extractOptional(params, 0)),
+        body:   body
+      };
+    }
 
-//FunctionExpression
-//  = FunctionToken __ id:(Identifier __)?
-//    "(" __ params:(FormalParameterList __)? ")" __
-//    "{" __ body:FunctionBody __ "}"
-//    {
-//      return {
-//        type:   "FunctionExpression",
-//        id:     extractOptional(id, 0),
-//        params: optionalList(extractOptional(params, 0)),
-//        body:   body
-//      };
-//    }
+FunctionExpression
+  = FunctionToken __ id:(Identifier __)?
+    "(" __ params:(FormalParameterList __)? ")" __
+    "{" __ body:FunctionBody __ "}"
+    {
+      return {
+        type:   "FunctionExpression",
+        id:     extractOptional(id, 0),
+        params: optionalList(extractOptional(params, 0)),
+        body:   body
+      };
+    }
 
 FormalParameterList
   = head:Identifier tail:(__ "," __ Identifier)* {
       return buildList(head, tail, 3);
     }
 
-//FunctionBody
-//  = body:SourceElements? {
-//      return {
-//        type: "BlockStatement",
-//        body: optionalList(body)
-//      };
-//    }
+FunctionBody
+  = body:SourceElements? {
+      return {
+        type: "BlockStatement",
+        body: optionalList(body)
+      };
+    }
 
-//Program
-//  = body:SourceElements? {
-//      return {
-//        type: "Program",
-//        body: optionalList(body)
-//      };
-//    }
+Program
+  = body:SourceElements? {
+      return {
+        type: "Program",
+        body: optionalList(body)
+      };
+    }
 
-//SourceElements
-//  = head:SourceElement tail:(__ SourceElement)* {
-//      return buildList(head, tail, 1);
-//    }
+SourceElements
+  = head:SourceElement tail:(__ SourceElement)* {
+      return buildList(head, tail, 1);
+    }
 
-//SourceElement
-//  = Statement
-//  / FunctionDeclaration
-
+SourceElement
+  = Statement
+  / FunctionDeclaration
 
 /* ----- A.6 Universal Resource Identifier Character Classes ----- */
 
@@ -1367,23 +1365,23 @@ FormalParameterList
 /* ----- B.1 Template ----- */
 
 Program
-  = body:SourceElements? {
+  = body:TemplateSourceElements? {
       return {
         type: "Program",
         body: optionalList(body)
       };
     }
 
-SourceElements
-  = elements:SourceElement* {
+TemplateSourceElements
+  = elements:TemplateSourceElement* {
       return elements;
     }
 
 NonSourceElement
-  = (!Statement SourceCharacter)
+  = (!TemplateStatement SourceCharacter)
 
-SourceElement
-  = Statement
+TemplateSourceElement
+  = TemplateStatement
   / head:NonSourceElement tail:(NonSourceElement)* {
       return {
         type: "TemplateRaw",
@@ -1391,110 +1389,98 @@ SourceElement
       };
     }
 
-Statement
-  = "{*" comment:(!"*}" SourceCharacter)* "*}" { return { type: 'TemplateComment', value: comment }; }
-  / "{{" __ literal:Literal __ "}}" { return { type: 'TemplateLiteral', value: literal }; }
-  / "{%" __ "extends" __ template:StringLiteral __ "%}"
-    {
+TemplateStatementList
+  = head:TemplateStatement tail:(__ TemplateStatement)* { return buildList(head, tail, 1); }
+
+TemplateStatement
+  = "{*" comment:(!"*}" SourceCharacter)* "*}" {
       return {
-        type: "TemplateExtend",
-        template: template
+        type: 'TemplateComment',
+        //value: extractList(comment, 1).join(''),
+        //location: location()
       };
     }
-  / "{%" __ "set" __ expression:AssignmentExpression __ "%}"
-    {
+  / "{{" __ literal:Expression __ "}}" {
+      return {
+        type: 'TemplateLiteral',
+        value: literal,
+        location: location()
+      };
+    }
+  / "{%" __ "raw" __ "%}" __ raw:(!("{%" __ "endraw" __ "%}") SourceCharacter)*  "{%" __ "endraw" __ "%}" {
+      return text();
+    }
+  / "{%" __ "extends" __ template:StringLiteral __ "%}" {
+      return {
+        location: location(),
+        type: "TemplateExtend",
+        template: template,
+        location: location()
+      };
+    }
+  / "{%" __ "set" __ expression:AssignmentExpression __ "%}" {
       return {
         type: "TemplateSet",
-        expression: expression
+        expression: expression,
+        location: location()
       };
     }
-  / "{%" __ "macro" __ name:Identifier __ "%}" __
-    body:(StatementList __)? __
-    "{%" __ "endmacro" __ "%}"
-    {
+  / "{%" __ "endmacro" __ "%}" { return { type: "TemplateEndMacro" } }
+  / "{%" __ "macro" __ name:Identifier __ "%}"
+    body:TemplateSourceElements {
       return {
         type: "TemplateMacro",
         name: name,
-        body: optionalList(extractOptional(body, 0))
+        body: body,
+        location: location()
       };
     }
-  / "{%" __ "block" __ name:Identifier __ "%}" __
-    body:(StatementList __)? __
-    "{%" __ "endblock" __ "%}"
-    {
+  / "{%" __ "endblock" __ "%}" { return { type: "TemplateEndBlock" } }
+  / "{%" __ "block" __ name:Identifier __ "%}"
+    body:TemplateSourceElements {
       return {
         type: "TemplateBlock",
         name: name,
-        body: optionalList(extractOptional(body, 0))
+        body: body,
+        location: location()
       };
     }
-  / "{%" __ "for" __ key:(Identifier __ "," __)? value:Identifier __ "in" __ list:Expression __ "%}" __
-    body:(StatementList __)? __
-    "{%" __ "endfor" __ "%}"
-    {
+  / "{%" __ "endfor" __ "%}" { return { type: "TemplateEndFor" } }
+  / "{%" __ "for" __ key:(Identifier __ "," __)? value:Identifier __ "in" __ list:Expression __ "%}"
+    body:TemplateSourceElements {
       return {
         type: "TemplateFor",
         key: key,
         value: value,
         list: list,
-        body: optionalList(extractOptional(body, 0))
+        body: body,
+        location: location()
       };
     }
-  / "{%" __ condition:IfStatement __
-    "{%" __ "endif" __ "%}"
-    {
-      return condition;
-    }
-
-IfStatement
-  = "if" __ test:Expression __ "%}" __
-    consequent:(StatementList __)? __
-    "{%" __ "else" __ alternate:IfStatement
-    {
-      return {
-        type: "TemplateIfElse",
-        test: test,
-        consequent: optionalList(extractOptional(consequent, 0)),
-        alternate: alternate
-      }
-    }
-  / "if" __ test:Expression __ "%}" __
-    consequent:(StatementList __)? __
-    {
+  / "{%" __ "endif" __ "%}" { return { type: "TemplateEndIf" } }
+  / "{%" __ "if" __ test:Expression __ "%}"
+    consequent:TemplateSourceElements {
       return {
         type: "TemplateIf",
         test: test,
-        consequent: optionalList(extractOptional(consequent, 0))
-      }
+        consequent: consequent,
+        location: location()
+      };
     }
-  / "%}" __
-    alternate:(StatementList __)? __
-    {
+  / "{%" __ "elseif" __ test:Expression __ "%}"
+    consequent:TemplateSourceElements {
+      return {
+        type: "TemplateElseIf",
+        test: test,
+        consequent: consequent,
+        location: location()
+      };
+    }
+  / "{%" __ "else" __ "%}"
+    consequent:TemplateSourceElements {
       return {
         type: "TemplateElse",
-        alternate: optionalList(extractOptional(alternate, 0))
-      }
+        consequent: consequent,
+        location: location()
+      };
     }
-
-//IfStatement
-//  = IfToken __ "(" __ test:Expression __ ")" __
-//    consequent:Statement __
-//    ElseToken __
-//    alternate:Statement
-//    {
-//      return {
-//        type:       "IfStatement",
-//        test:       test,
-//        consequent: consequent,
-//        alternate:  alternate
-//      };
-//    }
-//  / IfToken __ "(" __ test:Expression __ ")" __
-//    consequent:Statement {
-//      return {
-//        type:       "IfStatement",
-//        test:       test,
-//        consequent: consequent,
-//        alternate:  null
-//      };
-//    }

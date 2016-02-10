@@ -1,54 +1,58 @@
 "use strict";
 
 var util = require('util');
-var Parser = require('./lib/Parser');
+var Environment = require('./lib/Environment');
 
 var str = `
-	{{ 32 }}
-	{{ {
-		type: 'Test'
-	} }}
-	{% if hey.come && bleh.jeez.test() %}
-		{{ 42 }}
-	{% endif %}
-	{% for t in [1,2,3,4] %}
-		{{ "Hey" }}
+	Foo
+	{% macro foo %}
+		{{ 32 }}
+	{% endmacro %}
+
+	{% block foo %}
+		BLeh
+	{% endblock %}
+
+	{% for value in key %}
+		Yay
 	{% endfor %}
-	{% set t = {
-		foo: "Bar"
-	} %}
-`;
 
-str = `
 	{% if true %}
-		{{ 1 }}
+		Bleh
 	{% endif %}
+
 	{% if true %}
-		{{ 2 }}
+		Mooo
 	{% else %}
-		{{ 3 }}
+		Mehh
 	{% endif %}
+
 	{% if true %}
-		{{ 4 }}
-	{% else if true %}
-		{{ 5 }}
+		Mooo
+	{% elseif false %}
+		Mehh
 	{% endif %}
+
 	{% if true %}
-		{{ 6 }}
-	{% else if true %}
-		{{ 7 }}
-	{% else if true %}
-		{{ 8 }}
+		Greee
+	{% elseif false %}
+		Juuu
+	{% else %}
+		Loooo
 	{% endif %}
 `;
 
-try {
-	var t = process.hrtime();
-	var parsed = Parser.parse(str);
-	console.log(util.inspect(parsed, { depth: null }));
-	t = process.hrtime(t);
-	console.log(((t[0] * 1e9 + t[1]) / 1e6).toFixed(4) + 'ms');
-} catch (e) {
-	console.error(e.stack);
-	console.error(e.location);
-}
+var env = new Environment();
+var template = env.compileString(str);
+
+console.log(
+	template({
+		foo: 'bar',
+		test: {
+			bar: function () { return 'foobar'; },
+			foo: {
+				bar: function () { return 'barfoo'; }
+			}
+		}
+	})
+);
