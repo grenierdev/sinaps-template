@@ -1377,40 +1377,48 @@ TemplateSourceElements
       return elements;
     }
 
-NonSourceElement
-  = (!TemplateStatement SourceCharacter)
-
 TemplateSourceElement
   = TemplateStatement
-  / head:NonSourceElement tail:(NonSourceElement)* {
-      return {
-        type: "TemplateRaw",
-        value: text()
-      };
-    }
-
-TemplateStatementList
-  = head:TemplateStatement tail:(__ TemplateStatement)* { return buildList(head, tail, 1); }
 
 TemplateStatement
   = "{*" comment:(!"*}" SourceCharacter)* "*}" {
       return {
         type: 'TemplateComment',
-        //value: extractList(comment, 1).join(''),
-        //location: location()
       };
     }
-  / "{{" __ literal:Expression __ "}}" {
+  / "{{" literal:TemplateLiteral "}}" {
+      return literal;
+    }
+  / "{{" literal:(!"}}" SourceCharacter)* "}}" {
+      return {
+        type: 'TemplateLiteralSyntaxError',
+        location: location()
+      }
+    }
+  / "{%" block:TemplateBlock "%}" {
+      return block;
+    }
+  / "{%" block:(!"%}" SourceCharacter)* "%}" {
+      return {
+        type: 'TemplateBlockSyntaxError',
+        location: location()
+      }
+    }
+  / SourceCharacter {
+      return text();
+    }
+
+TemplateLiteral
+  = __ literal:Expression __ {
       return {
         type: 'TemplateLiteral',
         value: literal,
         location: location()
       };
     }
-  / "{%" __ "raw" __ "%}" __ raw:(!("{%" __ "endraw" __ "%}") SourceCharacter)*  "{%" __ "endraw" __ "%}" {
-      return text();
-    }
-  / "{%" __ "extends" __ template:StringLiteral __ "%}" {
+
+TemplateBlock
+  = __ "extends" __ template:StringLiteral __ {
       return {
         location: location(),
         type: "TemplateExtend",
@@ -1418,7 +1426,7 @@ TemplateStatement
         location: location()
       };
     }
-  / "{%" __ "import" __ template:StringLiteral __ "as" __ as:StringLiteral __ "%}" {
+  / __ "import" __ template:StringLiteral __ "as" __ as:StringLiteral __ {
       return {
         location: location(),
         type: "TemplateExtend",
@@ -1427,31 +1435,38 @@ TemplateStatement
         location: location()
       };
     }
-  / "{%" __ "set" __ expression:AssignmentExpression __ "%}" {
+  / __ "set" __ expression:AssignmentExpression __ {
       return {
         type: "TemplateSet",
         expression: expression,
         location: location()
       };
     }
-  / "{%" __ "endmacro" __ "%}" { return { type: "TemplateEndMacro" } }
-  / "{%" __ "macro" __ name:Identifier __ "%}" {
+  / __ "raw" __ {
+      return {
+        type: "TemplateRaw",
+        name: name,
+        location: location()
+      };
+    }
+  / __ "endraw" __ { return { type: "TemplateEndRaw", location: location() } }
+  / __ "macro" __ name:Identifier __ {
       return {
         type: "TemplateMacro",
         name: name,
         location: location()
       };
     }
-  / "{%" __ "endblock" __ "%}" { return { type: "TemplateEndBlock" } }
-  / "{%" __ "block" __ name:Identifier __ "%}" {
+  / __ "endmacro" __ { return { type: "TemplateEndMacro", location: location() } }
+  / __ "block" __ name:Identifier __ {
       return {
         type: "TemplateBlock",
         name: name,
         location: location()
       };
     }
-  / "{%" __ "endfor" __ "%}" { return { type: "TemplateEndFor" } }
-  / "{%" __ "for" __ key:(Identifier __ "," __)? value:Identifier __ "in" __ list:Expression __ "%}" {
+  / __ "endblock" __ { return { type: "TemplateEndBlock", location: location() } }
+  / __ "for" __ key:(Identifier __ "," __)? value:Identifier __ "in" __ list:Expression __ {
       return {
         type: "TemplateFor",
         key: key,
@@ -1460,24 +1475,25 @@ TemplateStatement
         location: location()
       };
     }
-  / "{%" __ "endif" __ "%}" { return { type: "TemplateEndIf" } }
-  / "{%" __ "if" __ test:Expression __ "%}" {
+  / __ "endfor" __ { return { type: "TemplateEndFor", location: location() } }
+  / __ "if" __ test:Expression __ {
       return {
         type: "TemplateIf",
         test: test,
         location: location()
       };
     }
-  / "{%" __ "elseif" __ test:Expression __ "%}" {
+  / __ "elseif" __ test:Expression __ {
       return {
         type: "TemplateElseIf",
         test: test,
         location: location()
       };
     }
-  / "{%" __ "else" __ "%}" {
+  / __ "else" __ {
       return {
         type: "TemplateElse",
         location: location()
       };
     }
+  / __ "endif" __ { return { type: "TemplateEndIf", location: location() } }
