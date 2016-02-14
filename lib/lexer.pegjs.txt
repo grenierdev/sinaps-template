@@ -1420,16 +1420,15 @@ TemplateLiteral
 TemplateBlock
   = __ "extends" __ template:StringLiteral __ {
       return {
-        location: location(),
         type: "TemplateExtend",
         template: template,
         location: location()
       };
     }
-  / __ "import" __ template:StringLiteral __ "as" __ as:StringLiteral __ {
+  / __ "import" __ template:StringLiteral __ "as" __ as:Identifier __ {
       return {
         location: location(),
-        type: "TemplateExtend",
+        type: "TemplateImport",
         template: template,
         as: as,
         location: location()
@@ -1442,14 +1441,13 @@ TemplateBlock
         location: location()
       };
     }
-  / __ "raw" __ {
+  / __ "raw" __ "%}" raw:(!("{%" __ "endraw" __ "%}") SourceCharacter)* "{%" __ "endraw" __ {
       return {
         type: "TemplateRaw",
-        name: name,
+        raw: optionalList(extractList(raw, 1)).join(''),
         location: location()
       };
     }
-  / __ "endraw" __ { return { type: "TemplateEndRaw", location: location() } }
   / __ "macro" __ name:Identifier __ {
       return {
         type: "TemplateMacro",
