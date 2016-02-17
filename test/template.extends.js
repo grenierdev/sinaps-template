@@ -26,12 +26,12 @@ describe(`Template Extends/Block/Import`, () => {
 
 	it('template can extends an other', () => {
 		var compiled = env.compileString('{% extends "extends.html" %}');
-		expect(compiled().output).to.be.equal(`Foo Bar\r\n`);
+		expect(compiled().output.replace(/\s+$/, '')).to.be.equal(`Foo Bar`);
 	});
 
 	it('block can override extended template', () => {
 		var compiled = env.compileString('{% extends "extends.html" %}{% block foo %}Moo{% endblock %}');
-		expect(compiled().output).to.be.equal(`Moo Bar\r\n`);
+		expect(compiled().output.replace(/\s+$/, '')).to.be.equal(`Moo Bar`);
 	});
 
 	it('template can import template as variable', () => {
