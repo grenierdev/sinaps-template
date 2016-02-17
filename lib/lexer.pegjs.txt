@@ -1481,7 +1481,7 @@ TemplateBlock
         location: location()
       };
     }
-  / __ "elseif" __ test:Expression __ {
+  / __ "else" __ "if" __ test:Expression __ {
       return {
         type: "TemplateElseIf",
         test: test,
