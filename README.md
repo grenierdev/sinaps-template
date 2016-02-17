@@ -5,7 +5,7 @@ Sinaps Template is a template engin similar to [Jinja2](http://jinja.pocoo.org/d
 
 ## Install
 ```js
-npm install --save sinaps-odm
+npm install --save sinaps-template
 ```
 or
 ```html
