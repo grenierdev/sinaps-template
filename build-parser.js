@@ -4,7 +4,7 @@ var peg = require('pegjs');
 var util = require('util');
 var path = require('path');
 var fs = require('fs');
-var lexer = fs.readFileSync(path.join(__dirname, './lib/lexer.pegjs.txt')).toString();
+var lexer = fs.readFileSync(path.join(__dirname, './lib/lexer.pegjs')).toString();
 var parser;
 
 try {
@@ -12,7 +12,7 @@ try {
 
 module.exports = ` + peg.buildParser(lexer, {
 		cache: false,
-		optimize: 'speed',
+		optimize: 'speed', 
 		output: 'source'
 	});
 } catch (e) {
