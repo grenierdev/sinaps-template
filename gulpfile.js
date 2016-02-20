@@ -43,7 +43,7 @@ gulp.task('browser:babel', () => {
 });
 
 gulp.task('browser:babel-remove-fileloader', ['browser:babel'], () => {
-	return remove(['./tmp/lib/loaders/FileLoader.js']);
+	return remove(['./tmp/lib/loaders/FileLoader.js', './tmp/lib/loaders/MultiFileLoader.js']);
 });
 
 gulp.task('browser:parser', ['browser:babel-remove-fileloader'], () => {
