@@ -20,7 +20,7 @@ describe(`Template Macro/Set`, () => {
 
 	it('can compile simple macro expression', () => {
 		expect(() => {
-			env.compileString('{% macro foo %}Bar{% endmacro %}');
+			env.compileString('{% macro foo(item, format) %}Bar{% endmacro %}');
 		}).to.not.throw();
 	});
 
