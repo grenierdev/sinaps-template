@@ -68,7 +68,7 @@ describe(`Template literals`, () => {
 	});
 
 	it('can call function', () => {
-		var compiled = env.compileString('{{ foo() }}');
+		var compiled = env.compileString('{{ foo(breadcrumbs) }}');
 		expect(compiled({ foo: function () { return 'Bar'; } }).output).to.equal('Bar');
 	});
 
